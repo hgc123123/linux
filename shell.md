@@ -12,4 +12,18 @@ do
 done
 ```
 
-jiji
+### 使用POSIX ACL控制对目录，文件的读写权限
+#### setfacl
+```
+#!/bin/bash
+for i in `cat name`
+do
+   cd /dssg/shake
+   setfacl -m u:$i:rx vasp
+   cd /dssg/vasp.6.2.1/bin
+   setfacl -m u:$i:rx *
+done
+
+
+setfacl -x u:hpc vasp
+```
