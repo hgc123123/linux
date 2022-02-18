@@ -32,3 +32,9 @@ setfacl -x u:hpc vasp
 ```
 sed -i  "s:/lustre/home/acct-hpc/hpchgc/software/BTE/test/install/hypre/include:/hu/hu:g" CMakeLists.txt
 ```
+
+#### sed替换文件中的字符串
+```
+sed -i  's/hu/ma/g' 1
+```
+
