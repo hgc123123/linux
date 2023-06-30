@@ -11,6 +11,14 @@ do
     sbatch hpl.slurm;
 done
 ```
+#### while
+```
+while read line
+do 
+    size=$(echo $line | awk '{print $1}')
+    echo $size
+done < file.txt
+```
 
 ### 使用POSIX ACL控制对目录，文件的读写权限
 #### setfacl
