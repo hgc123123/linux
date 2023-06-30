@@ -20,6 +20,15 @@ do
 done < file.txt
 ```
 
+#### while 
+colurm seprated by blank
+```
+while IFS=" ", read first second
+do
+    echo "$first"
+done < file.txt
+```
+
 ### 使用POSIX ACL控制对目录，文件的读写权限
 #### setfacl
 ```
