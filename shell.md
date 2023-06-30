@@ -68,6 +68,7 @@ awk 'NR>1 && $9>0 {printf "%-8s,%-8s,%-18s\n",$1,$9,$12}' file.txt
 ```
 awk '{if($9>0){printf "%-8s,%-8s,%-18s\n",$1,$9,$12}}' top.txt
 ```
+
 ### 在结尾处输出统计的和
 ```
 awk 'BEGIN {sum=0} {if($9>0){printf "%-8s,%-8s,%-18s\n",$1,$9,$12;sum += $9}} END {printf "sum is: %s\n",sum}' top.txt
@@ -80,6 +81,11 @@ awk 'NR!=1{a[$2]++;} END {for (i in a) print i", " a[i];}' top.txt
 ###有序输出数组
 ```
 awk 'BEGIN {into="this is a test";tlen=split(info,arra," ");for(k=1;k<tlen;k++){print k,arra[k];}}' top.txt
+```
+
+###判断是否存在key in array
+```
+awk 'BEGIN{info="it is a test";tlen=split(info,tA," ");for(k=1;k<=tlen;k++){print k,tA[k];}}'
 ```
 
 ###根绝字符匹配来确定文件拆分
@@ -95,6 +101,7 @@ awk 'BEGIN{} {} END{}' file1 file2
 NR,表示awk开始执行程序后所读取的数据行数.
 FNR,与NR功用类似,不同的是awk每打开一个新文件,FNR便从0重新累计.
 ```
- awk '{ if (NR==FNR) {arraya[$1]=$2} if (NR!=FNR) { arrayb[$1]=$2}}END{for (i in arraya) {print i,arraya[i],arrayb[i]}} ' file1 file2
+ awk '{ if (NR==FNR) {arraya[$1]=$2} if (NR!=FNR) { arrayb[$1]=$2}}END{for (i in arraya) {print i,arraya[i],arrayb[i]}} ' file1 file2  > x
+sort -n -k 1 -t ' ' x
 ```
 
