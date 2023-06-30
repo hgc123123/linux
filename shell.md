@@ -81,3 +81,8 @@ awk 'NR!=1{a[$2]++;} END {for (i in a) print i", " a[i];}' top.txt
 ```
 awk 'BEGIN {into="this is a test";tlen=split(info,arra," ");for(k=1;k<tlen;k++){print k,arra[k];}}' top.txt
 ```
+
+###根绝字符匹配来确定文件拆分
+```
+awk 'NR>1 {if($0~/york/){printf "%-8s %-8s %-8s %-18s\n",$1,$2,$9,$12 > "1.txt"}else if($0~/root/){printf "%-8s %-8s %-8s %-18s\n",$1,$2,$9,$12 > "2.txt"}else{printf "%-8s %-8s %-8s %-18s\n",$1,$2,$9,$12 > "3.txt"}}' top.txt
+```
