@@ -86,3 +86,15 @@ awk 'BEGIN {into="this is a test";tlen=split(info,arra," ");for(k=1;k<tlen;k++){
 ```
 awk 'NR>1 {if($0~/york/){printf "%-8s %-8s %-8s %-18s\n",$1,$2,$9,$12 > "1.txt"}else if($0~/root/){printf "%-8s %-8s %-8s %-18s\n",$1,$2,$9,$12 > "2.txt"}else{printf "%-8s %-8s %-8s %-18s\n",$1,$2,$9,$12 > "3.txt"}}' top.txt
 ```
+
+***处理两个文件的格式***
+```
+awk 'BEGIN{} {} END{}' file1 file2
+```
+####合并两份文件
+NR,表示awk开始执行程序后所读取的数据行数.
+FNR,与NR功用类似,不同的是awk每打开一个新文件,FNR便从0重新累计.
+```
+ awk '{ if (NR==FNR) {arraya[$1]=$2} if (NR!=FNR) { arrayb[$1]=$2}}END{for (i in arraya) {print i,arraya[i],arrayb[i]}} ' file1 file2
+```
+
