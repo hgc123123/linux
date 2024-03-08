@@ -1,32 +1,22 @@
 
 
-### 流程控制语句
+### 物理CPU、CPU的核心数
 
-#### for
+#### 物理CPU数量
 ```
-#!/bin/bash
-#for(( i=1;i<10;i++ ))
-for i in {094,356} {098..099} {369..380}
-do
-    sbatch hpl.slurm;
-done
+grep physical.id /proc/cpuinfo | sort -u | wc -l
+2
 ```
-#### while
+#### 每个CPU的核心数
 ```
-while read line
-do 
-    size=$(echo $line | awk '{print $1}')
-    echo $size
-done < file.txt
+grep cpu.cores /proc/cpuinfo | sort -u
+cpu cores       : 32
 ```
 
-#### while 
-colurm seprated by blank
+#### 逻辑处理器数量
 ```
-while IFS=" ", read first second
-do
-    echo "$first"
-done < file.txt
+grep processor /proc/cpuinfo | wc -l
+64
 ```
 
 ### 使用POSIX ACL控制对目录，文件的读写权限
